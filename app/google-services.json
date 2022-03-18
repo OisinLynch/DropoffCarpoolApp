@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "819694063258",
+    "project_id": "carpoolprojectappv2",
+    "storage_bucket": "carpoolprojectappv2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:819694063258:android:8fd1e244488c6787bd9923",
+        "android_client_info": {
+          "package_name": "edu.olynch.carpoolprojectapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "819694063258-66b716lqb7pso9i2p3h95t35noj5caia.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8Jcef-1HXcjWB4zJKww6aelMdFYPFoIY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "819694063258-66b716lqb7pso9i2p3h95t35noj5caia.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
