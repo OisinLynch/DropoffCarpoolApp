@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CarpoolProjectApp">
         <activity
+            android:name=".HistoryManualActivity"
+            android:exported="false" />
+        <activity
             android:name=".CustomerHistoryActivity"
             android:exported="false" />
         <activity

@@ -15,4 +15,5 @@
     <color name="lightGrey">#C2C2C2</color>
     <color name="lighterGrey">#ECECEC</color>
     <color name="white">#FFFFFF</color>
+    <color name="jetBlack">#0E0E10</color>
 </resources>

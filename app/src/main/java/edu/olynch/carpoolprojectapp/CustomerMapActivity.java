@@ -283,7 +283,7 @@ public class CustomerMapActivity extends FragmentActivity implements NavigationV
                             mHistory.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-                                    Intent intent = new Intent(CustomerMapActivity.this, CustomerHistoryActivity.class);
+                                    Intent intent = new Intent(CustomerMapActivity.this, HistoryManualActivity.class);
                                     intent.putExtra("customerOrDriver", "Customers");
                                     startActivity(intent);
                                     return;

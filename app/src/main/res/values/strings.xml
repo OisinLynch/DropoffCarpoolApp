@@ -5,6 +5,36 @@
     <string name="stripe_client_key" templateMergeStrategy="preserve" translatable="false">stripe_sk_key</string>
     <string name="firebase_hosting_url" templateMergeStrategy="preserve" translatable="false">https://firebase_hosting_url/</string>
 
+    <string-array name="name">
+        <item>John</item>
+        <item>Oisin</item>
+        <item>Anna</item>
+        <item>Mark</item>
+        <item>Rachael</item>
+        <item>Tara</item>
+        <item>Brian</item>
+    </string-array>
+
+    <string-array name="destinationHistory">
+        <item>IT Sligo</item>
+        <item>IT Sligo</item>
+        <item>Dromore West</item>
+        <item>Tubbercurry</item>
+        <item>Ballina</item>
+        <item>Strandhill</item>
+        <item>Cooloney</item>
+    </string-array>
+
+    <string-array name="journey_length">
+        <item>40 Minutes</item>
+        <item>30 Minutes</item>
+        <item>35 Minutes</item>
+        <item>45 Minutes</item>
+        <item>50 Minutes</item>
+        <item>20 Minutes</item>
+        <item>20 Minutes</item>
+    </string-array>
+
     <string name="app_name">Dropoff</string>
     <string name="phone_driver">Phone</string>
     <string name="call_uber">Call Car</string>
@@ -288,6 +318,9 @@
     <string name="request_driver">Request Driver</string>
     <string name="logout">Logout</string>
     <string name="lift_id">Lift Id</string>
+    <string name="person_name">Person Name</string>
+    <string name="destinationHistory">Destination</string>
+    <string name="journey_length">Journey Length</string>
 
 
 </resources>

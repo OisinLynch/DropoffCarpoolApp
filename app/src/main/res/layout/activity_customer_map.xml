@@ -47,7 +47,6 @@
                     android:background="@drawable/round_button"
                     android:backgroundTint="@color/white"
                     android:theme="@style/Button.White"/>
-
                 <Button
                     android:layout_weight="1"
                     android:layout_width="0dp"

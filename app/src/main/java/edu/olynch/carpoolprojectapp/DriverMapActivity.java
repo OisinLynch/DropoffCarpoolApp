@@ -83,7 +83,7 @@ public class DriverMapActivity extends FragmentActivity implements NavigationVie
     Location mLastLocation;
     LocationRequest mLocationRequest;
     SupportMapFragment supportMapFragment;
-    private Button mLogout, mSettings, mLiftStatus;
+    private Button mLogout, mSettings, mLiftStatus, mHistory;
 
     private String customerId = "", destination;
 
@@ -128,6 +128,7 @@ public class DriverMapActivity extends FragmentActivity implements NavigationVie
 
         mSettings = findViewById(R.id.DriverSettings);
         mLiftStatus = findViewById(R.id.liftStatus);
+        mHistory = findViewById(R.id.driverHistoy);
 
         mLiftStatus.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -145,6 +146,15 @@ public class DriverMapActivity extends FragmentActivity implements NavigationVie
                         endRide();
                         break;
                 }
+            }
+        });
+
+        mHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DriverMapActivity.this, HistoryManualActivity.class);
+                startActivity(intent);
+                return;
             }
         });
 

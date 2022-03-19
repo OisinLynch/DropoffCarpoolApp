@@ -16,9 +16,11 @@
         <entry key="..\:/College Year 3-4/Year 4/CarpoolProjectApp/app/src/main/res/layout/activity_driver_map.xml" value="0.2" />
         <entry key="..\:/College Year 3-4/Year 4/CarpoolProjectApp/app/src/main/res/layout/activity_driver_settings.xml" value="0.1" />
         <entry key="..\:/College Year 3-4/Year 4/CarpoolProjectApp/app/src/main/res/layout/activity_history.xml" value="0.1" />
+        <entry key="..\:/College Year 3-4/Year 4/CarpoolProjectApp/app/src/main/res/layout/activity_history_manual.xml" value="0.25416666666666665" />
         <entry key="..\:/College Year 3-4/Year 4/CarpoolProjectApp/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/College Year 3-4/Year 4/CarpoolProjectApp/app/src/main/res/layout/activity_rider_login.xml" value="0.1" />
         <entry key="..\:/College Year 3-4/Year 4/CarpoolProjectApp/app/src/main/res/layout/item_history.xml" value="0.25416666666666665" />
+        <entry key="..\:/College Year 3-4/Year 4/CarpoolProjectApp/app/src/main/res/layout/recycler_view_row.xml" value="0.1" />
       </map>
     </option>
   </component>
