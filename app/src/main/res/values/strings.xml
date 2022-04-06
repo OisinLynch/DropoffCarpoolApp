@@ -321,6 +321,7 @@
     <string name="person_name">Person Name</string>
     <string name="destinationHistory">Destination</string>
     <string name="journey_length">Journey Length</string>
+    <string name="pay">Pay</string>
 
 
 </resources>

@@ -93,7 +93,7 @@ public class CustomerMapActivity extends FragmentActivity implements NavigationV
     Location mLastLocation;
     LocationRequest mLocationRequest;
     SupportMapFragment supportMapFragment;
-    private Button mLogout, mRequest, mSettings, mHistory;
+    private Button mLogout, mRequest, mSettings, mCustomerPayment;
     private LatLng pickupLocation;
     private Boolean requestBol = false;
     private Marker pickupMarker;
@@ -131,7 +131,7 @@ public class CustomerMapActivity extends FragmentActivity implements NavigationV
         mLogout = findViewById(R.id.logout);
         mRequest = findViewById(R.id.Request);
         mSettings = findViewById(R.id.CustomerSettings);
-        mHistory = findViewById(R.id.customerHistory);
+        mCustomerPayment = findViewById(R.id.customerPayment);
 
 
         destinationlatLng = new LatLng(0.0, 0.0);
@@ -280,11 +280,10 @@ public class CustomerMapActivity extends FragmentActivity implements NavigationV
                                 }
                             });
 
-                            mHistory.setOnClickListener(new View.OnClickListener() {
+                            mCustomerPayment.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-                                    Intent intent = new Intent(CustomerMapActivity.this, HistoryManualActivity.class);
-                                    intent.putExtra("customerOrDriver", "Customers");
+                                    Intent intent = new Intent(CustomerMapActivity.this, CustomerPaymentActivity.class);
                                     startActivity(intent);
                                     return;
                                 }

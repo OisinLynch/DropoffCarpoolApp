@@ -33,7 +33,7 @@ import java.util.Map;
 public class CustomersSettingsActivity extends AppCompatActivity {
 
     private EditText mNameField, mPhoneField;
-    private Button mConfirm, mBack;
+    private Button mConfirm, mBack, mCustomerHistory;
     private ImageView mProfileImage;
 
     private FirebaseAuth mAuth;
@@ -53,6 +53,7 @@ public class CustomersSettingsActivity extends AppCompatActivity {
         mPhoneField = (EditText) findViewById(R.id.Phone);
 
         mProfileImage = (ImageView) findViewById(R.id.ProfileImage);
+        mCustomerHistory = findViewById(R.id.customerHistoryButton);
 
         mBack = (Button) findViewById(R.id.Back);
         mConfirm = (Button) findViewById(R.id.Confirm);
@@ -69,6 +70,16 @@ public class CustomersSettingsActivity extends AppCompatActivity {
                 Intent intent = new Intent(Intent.ACTION_PICK);
                 intent.setType("image/*");
                 startActivityForResult(intent, 1);
+            }
+        });
+
+        mCustomerHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CustomersSettingsActivity.this, HistoryManualActivity.class);
+                intent.putExtra("customerOrDriver", "Customers");
+                startActivity(intent);
+                return;
             }
         });
 
