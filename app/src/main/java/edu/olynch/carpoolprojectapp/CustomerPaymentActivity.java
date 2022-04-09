@@ -29,7 +29,7 @@ import java.util.Map;
 
 public class CustomerPaymentActivity extends AppCompatActivity {
 
-    Button mPayDriver;
+    Button mPayDriver, mContinue;
     ImageButton mPayWithPayPal, mPayWithRevolut;
     String SECRET_KEY = "sk_test_51Kk3pyItK01kKtlB6VZop8XtamdUAaoffRyxB7MKlbVXrlvfwtOrYbzMJOjXbLJSAb6UHVLIcg0jHdBIS89TqdvV00q79LLCIi";
     String PUBLISH_KEY = "pk_test_51Kk3pyItK01kKtlBhb2Iu3RwOSLXYLzAWdj5xO04lNP4aZqpPynJGq0BIkOKV5872vleq2KuQVJGfKsuOooVDCB300iP9NYCf3";
@@ -47,6 +47,7 @@ public class CustomerPaymentActivity extends AppCompatActivity {
         mPayDriver = findViewById(R.id.btnPayDriver);
         mPayWithPayPal = findViewById(R.id.btnPayWithPayPal);
         mPayWithRevolut = findViewById(R.id.btnPayWithRevolut);
+        mContinue = findViewById(R.id.btnContinueToRating);
 
         PaymentConfiguration.init(this, PUBLISH_KEY);
 
@@ -73,6 +74,14 @@ public class CustomerPaymentActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = getPackageManager().getLaunchIntentForPackage("com.revolut.revolut");
+                startActivity(intent);
+            }
+        });
+
+        mContinue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CustomerPaymentActivity.this, RateDriverActivity.class);
                 startActivity(intent);
             }
         });

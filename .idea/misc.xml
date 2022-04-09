@@ -4,22 +4,31 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/College Year 3-4/Year 4/CarpoolProjectApp/app/src/main/res/drawable/colours.xml" value="0.252" />
+        <entry key="..\:/College Year 3-4/Year 4/CarpoolProjectApp/app/src/main/res/drawable/custom_person_icon.xml" value="0.249" />
+        <entry key="..\:/College Year 3-4/Year 4/CarpoolProjectApp/app/src/main/res/drawable/custom_phone_icon.xml" value="0.1" />
         <entry key="..\:/College Year 3-4/Year 4/CarpoolProjectApp/app/src/main/res/drawable/edit_text_border.xml" value="0.252" />
+        <entry key="..\:/College Year 3-4/Year 4/CarpoolProjectApp/app/src/main/res/drawable/edit_text_border_new.xml" value="0.2435" />
         <entry key="..\:/College Year 3-4/Year 4/CarpoolProjectApp/app/src/main/res/drawable/ic_car.png_background.xml" value="0.252" />
+        <entry key="..\:/College Year 3-4/Year 4/CarpoolProjectApp/app/src/main/res/drawable/ic_email.xml" value="0.249" />
         <entry key="..\:/College Year 3-4/Year 4/CarpoolProjectApp/app/src/main/res/drawable/ic_menu.xml" value="0.252" />
+        <entry key="..\:/College Year 3-4/Year 4/CarpoolProjectApp/app/src/main/res/drawable/ic_person.xml" value="0.249" />
+        <entry key="..\:/College Year 3-4/Year 4/CarpoolProjectApp/app/src/main/res/drawable/ic_person_focused.xml" value="0.249" />
+        <entry key="..\:/College Year 3-4/Year 4/CarpoolProjectApp/app/src/main/res/drawable/ic_phone_focused.xml" value="0.249" />
         <entry key="..\:/College Year 3-4/Year 4/CarpoolProjectApp/app/src/main/res/drawable/imageview_border.xml" value="0.252" />
         <entry key="..\:/College Year 3-4/Year 4/CarpoolProjectApp/app/src/main/res/drawable/round_button.xml" value="0.252" />
         <entry key="..\:/College Year 3-4/Year 4/CarpoolProjectApp/app/src/main/res/layout/activity_customer_history.xml" value="0.25416666666666665" />
         <entry key="..\:/College Year 3-4/Year 4/CarpoolProjectApp/app/src/main/res/layout/activity_customer_map.xml" value="0.1" />
         <entry key="..\:/College Year 3-4/Year 4/CarpoolProjectApp/app/src/main/res/layout/activity_customer_payment.xml" value="0.2" />
-        <entry key="..\:/College Year 3-4/Year 4/CarpoolProjectApp/app/src/main/res/layout/activity_customers_settings.xml" value="0.1" />
+        <entry key="..\:/College Year 3-4/Year 4/CarpoolProjectApp/app/src/main/res/layout/activity_customers_settings.xml" value="0.264" />
         <entry key="..\:/College Year 3-4/Year 4/CarpoolProjectApp/app/src/main/res/layout/activity_driver_login.xml" value="0.264" />
         <entry key="..\:/College Year 3-4/Year 4/CarpoolProjectApp/app/src/main/res/layout/activity_driver_map.xml" value="0.2" />
         <entry key="..\:/College Year 3-4/Year 4/CarpoolProjectApp/app/src/main/res/layout/activity_driver_settings.xml" value="0.1" />
         <entry key="..\:/College Year 3-4/Year 4/CarpoolProjectApp/app/src/main/res/layout/activity_history.xml" value="0.1" />
         <entry key="..\:/College Year 3-4/Year 4/CarpoolProjectApp/app/src/main/res/layout/activity_history_manual.xml" value="0.25416666666666665" />
         <entry key="..\:/College Year 3-4/Year 4/CarpoolProjectApp/app/src/main/res/layout/activity_main.xml" value="0.2" />
-        <entry key="..\:/College Year 3-4/Year 4/CarpoolProjectApp/app/src/main/res/layout/activity_rider_login.xml" value="0.1" />
+        <entry key="..\:/College Year 3-4/Year 4/CarpoolProjectApp/app/src/main/res/layout/activity_rate_driver.xml" value="0.24896265560165975" />
+        <entry key="..\:/College Year 3-4/Year 4/CarpoolProjectApp/app/src/main/res/layout/activity_rider_login.xml" value="0.176" />
+        <entry key="..\:/College Year 3-4/Year 4/CarpoolProjectApp/app/src/main/res/layout/edit_text_border.xml" value="0.25416666666666665" />
         <entry key="..\:/College Year 3-4/Year 4/CarpoolProjectApp/app/src/main/res/layout/item_history.xml" value="0.25416666666666665" />
         <entry key="..\:/College Year 3-4/Year 4/CarpoolProjectApp/app/src/main/res/layout/recycler_view_row.xml" value="0.1" />
       </map>
