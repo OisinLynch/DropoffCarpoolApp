@@ -39,6 +39,7 @@
         android:drawablePadding="12dp"
         android:padding="10dp"
         android:hint="Password"
+        android:inputType="textPassword"
         android:textColor="@color/jetBlack"
         android:textColorHint="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/login"

@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -24,8 +25,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class DriverLoginActivity extends AppCompatActivity {
 
@@ -38,6 +42,7 @@ public class DriverLoginActivity extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener firebaseAuthListener;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
+    private FirebaseFirestore mFirestore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +50,7 @@ public class DriverLoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_driver_login);
 
         mAuth = FirebaseAuth.getInstance();
+        mFirestore = FirebaseFirestore.getInstance();
 
         firebaseAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -92,7 +98,7 @@ public class DriverLoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Firebase Authentication
-                createUser();
+                registerUserDriver();
             }
         });
 
@@ -113,6 +119,7 @@ public class DriverLoginActivity extends AppCompatActivity {
         });
     }
 
+    /*
     //Create user method
     private void createUser(){
         final String email = mEmail.getText().toString();
@@ -140,6 +147,58 @@ public class DriverLoginActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+
+     */
+
+    private void registerUserDriver() {
+        String email = mEmail.getText().toString().trim();
+        String password = mPassword.getText().toString().trim();
+
+        if (email.isEmpty()) {
+            mEmail.setError("Email is required");
+            mEmail.requestFocus();
+            return;
+        }
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            mEmail.setError("Please provide a valid email address");
+            mEmail.requestFocus();
+            return;
+        }
+
+        if (password.isEmpty()) {
+            mPassword.setError("Password is required");
+            mPassword.requestFocus();
+            return;
+        }
+
+        if (password.length() < 6) {
+            mPassword.setError("Password must be at least 6 characters long");
+            mPassword.requestFocus();
+            return;
+        }
+
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            //If Authentication is successful display this to the user
+                            Toast.makeText(DriverLoginActivity.this,"Account Created",Toast.LENGTH_SHORT).show();
+                            DocumentReference dbDriver = mFirestore.collection("Drivers").document(user.getUid());
+
+                            Map<String,Object> userEmail = new HashMap<>();
+                            userEmail.put("Email",mEmail.getText().toString());
+                            dbDriver.set(userEmail);
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Toast.makeText(DriverLoginActivity.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
 
     @Override
