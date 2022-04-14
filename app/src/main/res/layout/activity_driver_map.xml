@@ -26,8 +26,8 @@
             android:id="@+id/CustomerInfo"
             android:layout_gravity="bottom"
             android:orientation="vertical"
-            android:background="@android:color/white"
-            android:visibility="gone">
+            android:background="@drawable/edit_text_border_new"
+            android:visibility="visible">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -48,41 +48,47 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/CustomerDestination"
                         android:paddingBottom="10sp"
-                        android:text="Destination: --"/>
+                        android:text="Destination: --"
+                        android:textColor="@color/jetBlack"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/CustomerName"
                         android:paddingBottom="10sp"
-                        android:paddingTop="20sp"/>
+                        android:paddingTop="20sp"
+                        android:text="Customer Name: --"
+                        android:textColor="@color/jetBlack"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/CustomerPhone"
                         android:paddingBottom="10sp"
-                        android:paddingTop="20sp"/>
+                        android:paddingTop="20sp"
+                        android:text="Customer Phone: --"
+                        android:textColor="@color/jetBlack"/>
                 </LinearLayout>
             </LinearLayout>
 
             <Button
+                android:id="@+id/liftStatus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Pickup Customer"
-                android:id="@+id/liftStatus"
-                android:textColor="@color/black"
                 android:background="@drawable/round_button"
-                android:backgroundTint="@color/white"/>
+                android:text="Pickup Customer"
+                android:textColor="@color/jetBlack" />
 
         </LinearLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/black">
+            android:background="@color/jetBlack">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/driverButtons" >
+                android:id="@+id/driverButtons"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp">
                 <Button
                     android:layout_weight="1"
                     android:layout_width="0dp"
@@ -90,8 +96,7 @@
                     android:id="@+id/logout"
                     android:text="Logout"
                     android:textColor="@color/black"
-                    android:background="@drawable/round_button"
-                    android:backgroundTint="@color/white"/>
+                    android:background="@drawable/round_button" />
                 <Button
                     android:layout_weight="1"
                     android:layout_width="0dp"
@@ -99,8 +104,7 @@
                     android:id="@+id/driverHistoy"
                     android:text="History"
                     android:textColor="@color/black"
-                    android:background="@drawable/round_button"
-                    android:backgroundTint="@color/white"/>
+                    android:background="@drawable/round_button" />
                 <Button
                     android:layout_weight="1"
                     android:layout_width="0dp"
@@ -109,8 +113,7 @@
                     android:text="Settings"
                     android:layout_alignParentRight="true"
                     android:textColor="@color/black"
-                    android:background="@drawable/round_button"
-                    android:backgroundTint="@color/white"/>
+                    android:background="@drawable/round_button" />
 
             </LinearLayout>
 

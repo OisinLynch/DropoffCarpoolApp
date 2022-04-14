@@ -34,15 +34,15 @@ import java.util.Map;
 
 public class DriverSettingsActivity extends AppCompatActivity {
 
-    private EditText mNameField, mPhoneField, mCarField;
-    private Button mConfirm, mBack;
+    private EditText mNameField, mPhoneField, mCarField, mLicensePlateField;
+    private Button mConfirm, mBack, mDriverHistory;
     private ImageView mProfileImage;
 
     private FirebaseAuth mAuth;
     private DatabaseReference mDriversDatabase;
 
     private String userId;
-    private String mName, mPhone, mCar, mProfileImageUrl, mService;
+    private String mName, mPhone, mCar, mLicensePlate, mProfileImageUrl, mService;
 
     private Uri resultUri;
 
@@ -56,11 +56,14 @@ public class DriverSettingsActivity extends AppCompatActivity {
         mNameField = (EditText) findViewById(R.id.Name);
         mPhoneField = (EditText) findViewById(R.id.Phone);
         mCarField = (EditText) findViewById(R.id.Car);
+        mLicensePlateField = (EditText) findViewById(R.id.LicensePlate);
 
         mProfileImage = (ImageView) findViewById(R.id.ProfileImage);
 
         mBack = (Button) findViewById(R.id.Back);
         mConfirm = (Button) findViewById(R.id.Confirm);
+        mDriverHistory = (Button) findViewById(R.id.driverHistoryButton);
+
         mRadioGroup = (RadioGroup) findViewById(R.id.RadioGroup);
 
         mAuth = FirebaseAuth.getInstance();
@@ -85,11 +88,21 @@ public class DriverSettingsActivity extends AppCompatActivity {
             }
         });
 
+        mDriverHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DriverSettingsActivity.this, HistoryManualActivity.class);
+                intent.putExtra("customerOrDriver", "Customers");
+                startActivity(intent);
+                return;
+            }
+        });
+
         mBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
-                return;
+                Intent intent = new Intent(DriverSettingsActivity.this, DriverMapActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -111,6 +124,10 @@ public class DriverSettingsActivity extends AppCompatActivity {
                     if (map.get("car") != null) {
                         mCar = map.get("car").toString();
                         mCarField.setText(mCar);
+                    }
+                    if (map.get("licensePlate") != null) {
+                        mLicensePlate = map.get("licensePlate").toString();
+                        mLicensePlateField.setText(mLicensePlate);
                     }
                     if (map.get("service") != null) {
                         mService = map.get("service").toString();
@@ -178,6 +195,7 @@ public class DriverSettingsActivity extends AppCompatActivity {
         mName = mNameField.getText().toString();
         mPhone = mPhoneField.getText().toString();
         mCar = mCarField.getText().toString();
+        mLicensePlate = mLicensePlateField.getText().toString();
 
         int selectId = mRadioGroup.getCheckedRadioButtonId();
 
@@ -193,6 +211,7 @@ public class DriverSettingsActivity extends AppCompatActivity {
         userInfo.put("name", mName);
         userInfo.put("phone", mPhone);
         userInfo.put("car", mCar);
+        userInfo.put("licensePlate", mLicensePlate);
         userInfo.put("service", mService);
         mDriversDatabase.updateChildren(userInfo);
 

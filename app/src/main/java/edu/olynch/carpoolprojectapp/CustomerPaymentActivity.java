@@ -29,8 +29,7 @@ import java.util.Map;
 
 public class CustomerPaymentActivity extends AppCompatActivity {
 
-    Button mPayDriver, mContinue;
-    ImageButton mPayWithPayPal, mPayWithRevolut;
+    Button mPayDriver, mContinue, mPayWithPayPal, mPayWithRevolut;
     String SECRET_KEY = "sk_test_51Kk3pyItK01kKtlB6VZop8XtamdUAaoffRyxB7MKlbVXrlvfwtOrYbzMJOjXbLJSAb6UHVLIcg0jHdBIS89TqdvV00q79LLCIi";
     String PUBLISH_KEY = "pk_test_51Kk3pyItK01kKtlBhb2Iu3RwOSLXYLzAWdj5xO04lNP4aZqpPynJGq0BIkOKV5872vleq2KuQVJGfKsuOooVDCB300iP9NYCf3";
     PaymentSheet paymentSheet;

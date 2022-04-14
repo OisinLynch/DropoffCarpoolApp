@@ -36,7 +36,6 @@
                     android:text="@string/logout"
                     android:textColor="@color/black"
                     android:background="@drawable/round_button"
-                    android:backgroundTint="@color/white"
                     android:theme="@style/Button.White"/>
                 <Button
                     android:layout_weight="1"
@@ -46,7 +45,6 @@
                     android:text="@string/pay"
                     android:textColor="@color/black"
                     android:background="@drawable/round_button"
-                    android:backgroundTint="@color/white"
                     android:theme="@style/Button.White"/>
                 <Button
                     android:layout_weight="1"
@@ -56,7 +54,6 @@
                     android:text="@string/settings"
                     android:textColor="@color/black"
                     android:background="@drawable/round_button"
-                    android:backgroundTint="@color/white"
                     android:theme="@style/Button.White"/>
 
             </LinearLayout>
@@ -107,19 +104,34 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/DriverName"
                         android:paddingBottom="10sp"
-                        android:paddingTop="20sp"/>
+                        android:paddingTop="20sp"
+                        android:text="Driver Name: --"
+                        android:textColor="@color/jetBlack"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/DriverPhone"
                         android:paddingBottom="10sp"
-                        android:paddingTop="20sp"/>
+                        android:paddingTop="20sp"
+                        android:text="Driver Phone: --"
+                        android:textColor="@color/jetBlack"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/DriverCar"
                         android:paddingBottom="10sp"
-                        android:paddingTop="20sp"/>
+                        android:paddingTop="20sp"
+                        android:text="Driver Car: --"
+                        android:textColor="@color/jetBlack"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/DriverLicensePlate"
+                        android:paddingBottom="10sp"
+                        android:paddingTop="20sp"
+                        android:text="Driver License Plate: --"
+                        android:textColor="@color/jetBlack"/>
                 </LinearLayout>
 
             </LinearLayout>
@@ -140,19 +152,22 @@
                         android:layout_height="wrap_content"
                         android:text="One Seat"
                         android:id="@+id/OneSeat"
-                        android:buttonTint="@color/black"/>
+                        android:buttonTint="@color/jetBlack"
+                        android:layout_weight="1"/>
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Two Seats"
                         android:id="@+id/TwoSeats"
-                        android:buttonTint="@color/black" />
+                        android:buttonTint="@color/jetBlack"
+                        android:layout_weight="1"/>
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Full Car"
                         android:id="@+id/FullCar"
-                        android:buttonTint="@color/black"/>
+                        android:buttonTint="@color/jetBlack"
+                        android:layout_weight="1"/>
                 </RadioGroup>
             </LinearLayout>
 
@@ -166,12 +181,9 @@
                 android:text="@string/request_driver"
                 android:textColor="@color/black"
                 android:background="@drawable/round_button"
-                android:backgroundTint="@color/white"
                 android:theme="@style/Button.White"/>
 
         </LinearLayout>
-
-
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </FrameLayout>

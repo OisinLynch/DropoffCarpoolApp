@@ -4,74 +4,133 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CustomersSettingsActivity"
+    android:background="@drawable/taxiimagepng"
     android:orientation="vertical"
-    android:padding="20sp">
+    android:padding="20sp"
+    tools:context=".CustomersSettingsActivity">
 
     <ImageView
+        android:id="@+id/ProfileImage"
         android:layout_width="100sp"
         android:layout_height="100sp"
-        android:id="@+id/ProfileImage"
-        android:src="@drawable/user"
-        android:layout_marginBottom="10sp"/>
+        android:layout_marginBottom="10sp"
+        android:src="@drawable/user2" />
+
     <EditText
         android:id="@+id/Name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20sp"
+        android:background="@drawable/edit_text_border_new"
+        android:drawableStart="@drawable/custom_person_icon"
+        android:drawablePadding="12dp"
+        android:padding="10dp"
         android:hint="Name"
-        android:layout_marginBottom="20sp"/>
+        android:textColor="@color/jetBlack"
+        android:textColorHint="@color/black"
+        android:layout_marginTop="5dp"/>
+
     <EditText
         android:id="@+id/Phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Phone Number"
         android:layout_marginBottom="20sp"
-        android:inputType="number"/>
+        android:background="@drawable/edit_text_border_new"
+        android:drawableStart="@drawable/custom_phone_icon"
+        android:drawablePadding="12dp"
+        android:padding="10dp"
+        android:hint="Phone Number"
+        android:inputType="number"
+        android:textColor="@color/jetBlack"
+        android:textColorHint="@color/black"
+        android:layout_marginTop="5dp"/>
+
     <EditText
         android:id="@+id/Car"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20sp"
+        android:background="@drawable/edit_text_border_new"
+        android:drawableStart="@drawable/custom_new_car_icon"
+        android:drawablePadding="12dp"
+        android:padding="10dp"
         android:hint="Car"
-        android:layout_marginBottom="20sp" />
+        android:textColor="@color/jetBlack"
+        android:textColorHint="@color/black"
+        android:layout_marginTop="5dp"/>
+
+    <EditText
+        android:id="@+id/LicensePlate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20sp"
+        android:background="@drawable/edit_text_border_new"
+        android:drawableStart="@drawable/custom_license_plate_icon"
+        android:drawablePadding="12dp"
+        android:padding="10dp"
+        android:hint="License Plate"
+        android:textColor="@color/jetBlack"
+        android:textColorHint="@color/black"
+        android:layout_marginTop="5dp"/>
+
     <RadioGroup
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/RadioGroup"
-        android:orientation="horizontal">
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="One Seat"
-            android:id="@+id/OneSeat"
-            android:buttonTint="@color/black"/>
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Two Seats"
-            android:id="@+id/TwoSeats"
-            android:buttonTint="@color/black"/>
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Full Car"
-            android:id="@+id/FullCar"
-            android:buttonTint="@color/black"/>
-    </RadioGroup>
-    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/edit_text_border_new">
+
+        <RadioButton
+            android:id="@+id/OneSeat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/jetBlack"
+            android:text="One Seat"
+            android:layout_weight="1"/>
+
+        <RadioButton
+            android:id="@+id/TwoSeats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/jetBlack"
+            android:text="Two Seats"
+            android:layout_weight="1"/>
+
+        <RadioButton
+            android:id="@+id/FullCar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/jetBlack"
+            android:text="Full Car"
+            android:layout_weight="1"/>
+    </RadioGroup>
+
+    <Button
         android:id="@+id/Confirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_button"
         android:text="Confirm"
         android:textColor="@color/black"
-        android:background="@drawable/round_button"
-        android:backgroundTint="@color/white"/>
+        android:layout_marginTop="20dp"/>
+
     <Button
+        android:id="@+id/driverHistoryButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/Back"
-        android:text="Back"
+        android:text="History"
         android:textColor="@color/black"
         android:background="@drawable/round_button"
-        android:backgroundTint="@color/white"/>
+        android:layout_marginTop="20dp"/>
+
+    <Button
+        android:id="@+id/Back"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_button"
+        android:text="Back"
+        android:textColor="@color/black"
+        android:layout_marginTop="20dp"/>
 
 </LinearLayout>

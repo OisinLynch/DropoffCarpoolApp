@@ -17,4 +17,8 @@
     <color name="white">#FFFFFF</color>
     <color name="jetBlack">#0E0E10</color>
     <color name="turquoise">#30D5C8</color>
+    <color name="gold">#FFD700</color>
+    <color name="PayPalBlue">#009cde</color>
+    <color name="PayPalYellow">#ffc439</color>
+    <color name="RevolutBlue">#0b84f6</color>
 </resources>
