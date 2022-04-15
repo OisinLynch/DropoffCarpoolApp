@@ -28,12 +28,14 @@ import java.util.Map;
 
 public class RiderLoginActivity extends AppCompatActivity {
 
+    //Create variables
     private EditText mEmail, mPassword;
     private Button mLogin, mRegistration;
     private TextView mReturnToSelect;
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener firebaseAuthListener;
+    private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
     private FirebaseFirestore mFirestore;
 
@@ -42,10 +44,14 @@ public class RiderLoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rider_login);
 
+        //initialise Firebase variables
         mAuth = FirebaseAuth.getInstance();
-        mDatabaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://carpoolprojectappv2-default-rtdb.firebaseio.com");
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        mDatabaseReference = mFirebaseDatabase.getReference();
+        //mDatabaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://carpoolprojectappv2-default-rtdb.firebaseio.com");
         mFirestore = FirebaseFirestore.getInstance();
 
+        //Method to change the screen to the customer map activity when a passengers authentication state changes
         firebaseAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -60,47 +66,23 @@ public class RiderLoginActivity extends AppCompatActivity {
             }
         };
 
+        //Initialise the variables
         mEmail = findViewById(R.id.email);
         mPassword = findViewById(R.id.password);
         mRegistration = findViewById(R.id.registration);
         mLogin = findViewById(R.id.login);
         mReturnToSelect = findViewById(R.id.returnToSelect);
 
-        /*
+        //Registration button to call the registration method for passengers
         mRegistration.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String email = mEmail.getText().toString();
-                final String password = mPassword.getText().toString();
-                mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(RiderLoginActivity.this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(!task.isSuccessful())
-                        {
-                            Toast.makeText(RiderLoginActivity.this, "Registration Error", Toast.LENGTH_SHORT).show();
-                        }
-                        else
-                        {
-                            String userId = mAuth.getCurrentUser().getUid();
-                            mDatabaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child("Customers").child(userId);
-                            mDatabaseReference.setValue(true);
-                            Toast.makeText(RiderLoginActivity.this, "Registration Successful", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-            }
-        });
-
-         */
-
-
-        mRegistration.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+                //registerUserPassengerRealtime();
                 registerUserPassenger();
             }
         });
 
+        //login button to login passenger accounts
         mLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -118,6 +100,7 @@ public class RiderLoginActivity extends AppCompatActivity {
             }
         });
 
+        //button to return to account selection screen
         mReturnToSelect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -128,6 +111,8 @@ public class RiderLoginActivity extends AppCompatActivity {
 
     }
 
+    //Method to allow for Passengers to register and adding their registration details to
+    //Firebase Firestore Database
     private void registerUserPassenger() {
         String email = mEmail.getText().toString().trim();
         String password = mPassword.getText().toString().trim();
@@ -179,12 +164,71 @@ public class RiderLoginActivity extends AppCompatActivity {
 
     }
 
+    //Method used to attempt to get tht Firebase Realtime Database to work on Passenger Registration
+
+    /*
+    private void registerUserPassengerRealtime() {
+        String email = mEmail.getText().toString().trim();
+        String password = mPassword.getText().toString().trim();
+
+        if (email.isEmpty()) {
+            mEmail.setError("Email is required");
+            mEmail.requestFocus();
+            return;
+        }
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            mEmail.setError("Please provide a valid email address");
+            mEmail.requestFocus();
+            return;
+        }
+
+        if (password.isEmpty()) {
+            mPassword.setError("Password is required");
+            mPassword.requestFocus();
+            return;
+        }
+
+        if (password.length() < 6) {
+            mPassword.setError("Password must be at least 6 characters long");
+            mPassword.requestFocus();
+            return;
+        }
+
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            //If Authentication is successful display this to the user
+                            Toast.makeText(RiderLoginActivity.this,"Account Created",Toast.LENGTH_SHORT).show();
+                            //DocumentReference dbPassenger = mFirestore.collection("Passengers").document(user.getUid());
+                            mDatabaseReference.child("Users")
+                                    .child("Passengers")
+                                    .setValue(user.getUid());
+
+                            //Map<String,Object> userEmail = new HashMap<>();
+                            //userEmail.put("Email",mEmail.getText().toString());
+                            //dbPassenger.set(userEmail);
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Toast.makeText(RiderLoginActivity.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
+     */
+
+    //Start the auth state listener to see if passenger is logged in on the application startup
     @Override
     protected void onStart() {
         super.onStart();
         mAuth.addAuthStateListener(firebaseAuthListener);
     }
 
+    //Stop the auth state listener to see if passenger is logged out on the application startup
     @Override
     protected  void onStop() {
         super.onStop();

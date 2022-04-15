@@ -21,6 +21,7 @@ import java.util.Map;
 
 public class RateDriverActivity extends AppCompatActivity {
 
+    //Create variables
     Button mSubmitRating;
     RatingBar mStarRating;
     float myRating = 0;
@@ -35,13 +36,16 @@ public class RateDriverActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rate_driver);
 
+        //Initialise Firebase variables
         mAuth = FirebaseAuth.getInstance();
         mFirestore = FirebaseFirestore.getInstance();
 
+        //Initialise variables
         mSubmitRating = (Button) findViewById(R.id.btnSubmitRating);
         mStarRating = (RatingBar) findViewById(R.id.starRating);
         mFeedback = (EditText) findViewById(R.id.etRatingFeedback);
 
+        //Method to allow passenger to change the star rating of a driver
         mStarRating.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
@@ -78,6 +82,7 @@ public class RateDriverActivity extends AppCompatActivity {
             }
         });
 
+        //Submit the drivers rating and feedback and call the upload rating method
         mSubmitRating.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

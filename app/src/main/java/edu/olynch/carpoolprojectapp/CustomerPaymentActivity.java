@@ -29,6 +29,7 @@ import java.util.Map;
 
 public class CustomerPaymentActivity extends AppCompatActivity {
 
+    //Creating variables
     Button mPayDriver, mContinue, mPayWithPayPal, mPayWithRevolut;
     String SECRET_KEY = "sk_test_51Kk3pyItK01kKtlB6VZop8XtamdUAaoffRyxB7MKlbVXrlvfwtOrYbzMJOjXbLJSAb6UHVLIcg0jHdBIS89TqdvV00q79LLCIi";
     String PUBLISH_KEY = "pk_test_51Kk3pyItK01kKtlBhb2Iu3RwOSLXYLzAWdj5xO04lNP4aZqpPynJGq0BIkOKV5872vleq2KuQVJGfKsuOooVDCB300iP9NYCf3";
@@ -43,6 +44,7 @@ public class CustomerPaymentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_payment);
 
+        //Initialise variables
         mPayDriver = findViewById(R.id.btnPayDriver);
         mPayWithPayPal = findViewById(R.id.btnPayWithPayPal);
         mPayWithRevolut = findViewById(R.id.btnPayWithRevolut);
@@ -50,10 +52,12 @@ public class CustomerPaymentActivity extends AppCompatActivity {
 
         PaymentConfiguration.init(this, PUBLISH_KEY);
 
+        //Payment sheet for stripe API to pay drivers
         paymentSheet = new PaymentSheet(this, paymentSheetResult -> {
         onPaymentResult(paymentSheetResult);
         });
 
+        //Pay driver button to open Stripe API
         mPayDriver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -61,6 +65,7 @@ public class CustomerPaymentActivity extends AppCompatActivity {
             }
         });
 
+        //Pay with PayPal button to launch the PayPal app on phone
         mPayWithPayPal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,6 +74,7 @@ public class CustomerPaymentActivity extends AppCompatActivity {
             }
         });
 
+        //Pay with Revolut button to launch Revolut app on phone
         mPayWithRevolut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -77,6 +83,7 @@ public class CustomerPaymentActivity extends AppCompatActivity {
             }
         });
 
+        //Continue to ratings page button
         mContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

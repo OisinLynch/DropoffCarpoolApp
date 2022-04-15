@@ -33,6 +33,7 @@ import java.util.Map;
 
 public class DriverLoginActivity extends AppCompatActivity {
 
+    //Create variables
     private EditText mEmail, mPassword;
     private Button mLogin, mRegistration;
     private TextView mReturnToSelect;
@@ -49,9 +50,13 @@ public class DriverLoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driver_login);
 
+        //Initialise Firebase variables
         mAuth = FirebaseAuth.getInstance();
         mFirestore = FirebaseFirestore.getInstance();
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference("Drivers");
 
+        //Bring user to the driver map activity if their authentiction state changes
         firebaseAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -65,9 +70,7 @@ public class DriverLoginActivity extends AppCompatActivity {
             }
         };
 
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference("Drivers");
-
+        //initilise variables
         mEmail = findViewById(R.id.email);
         mPassword = findViewById(R.id.password);
         mRegistration = findViewById(R.id.registration);
@@ -102,6 +105,7 @@ public class DriverLoginActivity extends AppCompatActivity {
             }
         });
 
+        //Return to account selection method
         mReturnToSelect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -151,6 +155,7 @@ public class DriverLoginActivity extends AppCompatActivity {
 
      */
 
+    //Register driver and enter their details into Firebase Firestore database
     private void registerUserDriver() {
         String email = mEmail.getText().toString().trim();
         String password = mPassword.getText().toString().trim();
@@ -179,6 +184,7 @@ public class DriverLoginActivity extends AppCompatActivity {
             return;
         }
 
+        //Create the user using their email and password
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -201,12 +207,14 @@ public class DriverLoginActivity extends AppCompatActivity {
                 });
     }
 
+    //Check to see the users auth state at app startup
     @Override
     protected void onStart() {
         super.onStart();
         mAuth.addAuthStateListener(firebaseAuthListener);
     }
 
+    //Check to see the users auth state at app closing
     @Override
     protected void onStop() {
         super.onStop();

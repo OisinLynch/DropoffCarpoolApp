@@ -34,6 +34,7 @@ import java.util.Map;
 
 public class DriverSettingsActivity extends AppCompatActivity {
 
+    //Create variables
     private EditText mNameField, mPhoneField, mCarField, mLicensePlateField;
     private Button mConfirm, mBack, mDriverHistory;
     private ImageView mProfileImage;
@@ -53,6 +54,7 @@ public class DriverSettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driver_settings);
 
+        //Initialise variables
         mNameField = (EditText) findViewById(R.id.Name);
         mPhoneField = (EditText) findViewById(R.id.Phone);
         mCarField = (EditText) findViewById(R.id.Car);
@@ -70,8 +72,10 @@ public class DriverSettingsActivity extends AppCompatActivity {
         userId = mAuth.getCurrentUser().getUid();
         mDriversDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(userId);
 
+        //Call the get users information method
         getUserInformation();
 
+        //Allow the user to select a profile picture from their gallery
         mProfileImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -81,6 +85,7 @@ public class DriverSettingsActivity extends AppCompatActivity {
             }
         });
 
+        //Confirm changes
         mConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,6 +93,7 @@ public class DriverSettingsActivity extends AppCompatActivity {
             }
         });
 
+        //Go to the drivers history page
         mDriverHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -98,6 +104,7 @@ public class DriverSettingsActivity extends AppCompatActivity {
             }
         });
 
+        //Go back to the previous page
         mBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -107,6 +114,7 @@ public class DriverSettingsActivity extends AppCompatActivity {
         });
     }
 
+    //Get the users information from the text boxes above
     private void getUserInformation() {
         mDriversDatabase.addValueEventListener(new ValueEventListener() {
             @Override
@@ -191,6 +199,7 @@ public class DriverSettingsActivity extends AppCompatActivity {
 
     }*/
 
+    //Save users information to Firebase database/storage
     private void saveUserInformation() {
         mName = mNameField.getText().toString();
         mPhone = mPhoneField.getText().toString();

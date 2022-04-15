@@ -32,6 +32,7 @@ import java.util.Map;
 
 public class CustomersSettingsActivity extends AppCompatActivity {
 
+    //Create varaiables
     private EditText mNameField, mPhoneField;
     private Button mConfirm, mBack, mCustomerHistory;
     private ImageView mProfileImage;
@@ -49,6 +50,7 @@ public class CustomersSettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customers_settings);
 
+        //initiaise variables
         mNameField = (EditText) findViewById(R.id.Name);
         mPhoneField = (EditText) findViewById(R.id.Phone);
 
@@ -62,8 +64,10 @@ public class CustomersSettingsActivity extends AppCompatActivity {
         userId = mAuth.getCurrentUser().getUid();
         mCustomerDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child("Customers").child(userId);
 
+        //Call get user information method
         getUserInformation();
 
+        //Code to get user profile pic from picking from users gallery
         mProfileImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,6 +77,7 @@ public class CustomersSettingsActivity extends AppCompatActivity {
             }
         });
 
+        //Send user to History page
         mCustomerHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -83,6 +88,7 @@ public class CustomersSettingsActivity extends AppCompatActivity {
             }
         });
 
+        //Comfirm changes to settings
         mConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -90,6 +96,7 @@ public class CustomersSettingsActivity extends AppCompatActivity {
             }
         });
 
+        //Go back to the previous page
         mBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -98,8 +105,7 @@ public class CustomersSettingsActivity extends AppCompatActivity {
         });
     }
 
-
-
+    //Get users information from what they have entered in the text box and save to Firebase database/storage
     private void getUserInformation() {
         mCustomerDatabase.addValueEventListener(new ValueEventListener() {
             @Override
@@ -128,6 +134,7 @@ public class CustomersSettingsActivity extends AppCompatActivity {
         });
     }
 
+    //Save the users information to Firebase database/storage
     private void saveUserInformation() {
         String mName = mNameField.getText().toString();
         String mPhone = mPhoneField.getText().toString();

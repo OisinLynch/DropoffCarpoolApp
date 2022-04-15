@@ -10,6 +10,7 @@ import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity {
 
+    //Create variables
     private ImageButton mDriver, mRider;
 
     @Override
@@ -17,9 +18,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Initialse variables
         mDriver = findViewById(R.id.driverButton);
         mRider = findViewById(R.id.riderButton);
 
+        //When user selects the driver button send them to the driver registration/login screen
         mDriver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -30,8 +33,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
+        //When user selects the passenger button send them to the driver registration/login screen
         mRider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -41,7 +43,5 @@ public class MainActivity extends AppCompatActivity {
                 return;
             }
         });
-
-
     }
 }

@@ -78,6 +78,7 @@ import edu.olynch.carpoolprojectapp.databinding.ActivityDriverMapBinding;
 
 public class DriverMapActivity extends FragmentActivity implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback, DirectionCallback, RoutingListener {
 
+    //Create variables
     private GoogleMap mMap;
     private ActivityDriverMapBinding binding;
     Location mLastLocation;
@@ -108,6 +109,7 @@ public class DriverMapActivity extends FragmentActivity implements NavigationVie
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //Code to get the Google Maps fragement working
         binding = ActivityDriverMapBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -116,6 +118,7 @@ public class DriverMapActivity extends FragmentActivity implements NavigationVie
 
         polylines = new ArrayList<>();
 
+        //initialise variables
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
         mCustomerInfo = (LinearLayout) findViewById(R.id.CustomerInfo);
@@ -149,6 +152,7 @@ public class DriverMapActivity extends FragmentActivity implements NavigationVie
             }
         });
 
+        //Bring user to the history page
         mHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -158,6 +162,7 @@ public class DriverMapActivity extends FragmentActivity implements NavigationVie
             }
         });
 
+        //logout button
         mLogout = findViewById(R.id.logout);
         mLogout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -184,6 +189,7 @@ public class DriverMapActivity extends FragmentActivity implements NavigationVie
             }
         }); */
 
+        //call the get assigned customer button
         getAssignedCustomer();
 
         if (ActivityCompat.checkSelfPermission(DriverMapActivity.this,
@@ -202,6 +208,7 @@ public class DriverMapActivity extends FragmentActivity implements NavigationVie
         mapFragment.getMapAsync(this);
     }
 
+    //Get the assigned customer
     private void getAssignedCustomer() {
         String driverId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         DatabaseReference assignedCustomerRef = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(driverId).child("customerRequest").child("customerPassengerId");
@@ -229,6 +236,7 @@ public class DriverMapActivity extends FragmentActivity implements NavigationVie
 
     }
 
+    //Get the assigned customers destination
     private void getAssignedCustomerDestination() {
         String driverId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         DatabaseReference assignedCustomerRef = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(driverId).child("customerRequest");
@@ -266,6 +274,7 @@ public class DriverMapActivity extends FragmentActivity implements NavigationVie
 
     }
 
+    //get the customer info such as name, phone number stc
     private void getAssignedCustomerInfo() {
         mCustomerInfo.setVisibility(View.VISIBLE);
         DatabaseReference mCustomerDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child("Customers").child(customerId);
@@ -293,6 +302,7 @@ public class DriverMapActivity extends FragmentActivity implements NavigationVie
         });
     }
 
+    //Code for when the ride ends
     private void endRide() {
         mLiftStatus.setText("Pickup Customer");
         erasePolyline();
@@ -319,6 +329,7 @@ public class DriverMapActivity extends FragmentActivity implements NavigationVie
         mCustomerProfileImage.setImageResource(R.drawable.user);
     }
 
+    //Code to add the rides history to the database
     private void recordLift() {
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         DatabaseReference driverRef = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(userId).child("history");
@@ -335,6 +346,7 @@ public class DriverMapActivity extends FragmentActivity implements NavigationVie
         historyRef.child(requestId).updateChildren(map);
     }
 
+    //Get the customers pickup location
     Marker pickupMarker;
     private  DatabaseReference assignedCustomerPickupLocationRef;
     private ValueEventListener assignedCustomerPickupLocationRefListener;
@@ -368,7 +380,7 @@ public class DriverMapActivity extends FragmentActivity implements NavigationVie
         });
     }
 
-
+    //Get the users current location
     private void getCurrentLocation() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
@@ -508,6 +520,7 @@ public class DriverMapActivity extends FragmentActivity implements NavigationVie
         return false;
     }
 
+    //Ask user for permission to use their location
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -525,6 +538,7 @@ public class DriverMapActivity extends FragmentActivity implements NavigationVie
 
     }
 
+    //Remove driver from the available drivers when the close the app
     private void disconnectDriver() {
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         DatabaseReference refWorking = FirebaseDatabase.getInstance().getReference("driversWorking");

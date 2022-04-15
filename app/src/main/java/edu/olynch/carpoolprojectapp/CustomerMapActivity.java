@@ -74,6 +74,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -88,6 +90,7 @@ import edu.olynch.carpoolprojectapp.databinding.ActivityCustomerMapBinding;
 
 public class CustomerMapActivity extends FragmentActivity implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback, DirectionCallback {
 
+    //Create variables
     private GoogleMap mMap;
     private @NonNull ActivityCustomerMapBinding binding;
     Location mLastLocation;
@@ -119,6 +122,7 @@ public class CustomerMapActivity extends FragmentActivity implements NavigationV
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //Code to get Google maps fragment working
         binding = ActivityCustomerMapBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -133,7 +137,7 @@ public class CustomerMapActivity extends FragmentActivity implements NavigationV
         mSettings = findViewById(R.id.CustomerSettings);
         mCustomerPayment = findViewById(R.id.customerPayment);
 
-
+        //Initialise variables
         destinationlatLng = new LatLng(0.0, 0.0);
 
         mDriverInfo = (LinearLayout) findViewById(R.id.DriverInfo);
@@ -178,6 +182,7 @@ public class CustomerMapActivity extends FragmentActivity implements NavigationV
             }
         });
 
+        //Logout button
         mLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -204,6 +209,7 @@ public class CustomerMapActivity extends FragmentActivity implements NavigationV
         mapFragment.getMapAsync(this);
     }
 
+    //get the users current location based of the phone GPS
     private void getCurrentLocation() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
@@ -215,6 +221,7 @@ public class CustomerMapActivity extends FragmentActivity implements NavigationV
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
+        //Show location on map
         Task<Location> task = mFusedLocationClient.getLastLocation();
         task.addOnSuccessListener(new OnSuccessListener<Location>() {
             @Override
@@ -234,6 +241,7 @@ public class CustomerMapActivity extends FragmentActivity implements NavigationV
                             //Add Marker on map
                             locationMarker = googleMap.addMarker(options);
 
+                            //Make a request for a driver
                             mRequest.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
@@ -271,6 +279,7 @@ public class CustomerMapActivity extends FragmentActivity implements NavigationV
                                     }
                                 }
                             });
+                            //Settings button
                             mSettings.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
@@ -280,6 +289,7 @@ public class CustomerMapActivity extends FragmentActivity implements NavigationV
                                 }
                             });
 
+                            //Payment button
                             mCustomerPayment.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
@@ -331,9 +341,11 @@ public class CustomerMapActivity extends FragmentActivity implements NavigationV
     private Boolean driverFound = false;
     private String driverFoundId;
 
+    //Get drivers location
     GeoQuery geoQuery;
     private void getLocationDriver() {
         DatabaseReference driverLocation = FirebaseDatabase.getInstance().getReference().child("driversAvailable");
+        //DocumentReference driverLocation = FirebaseFirestore.getInstance().collection("Drivers").document("driversAvailable");
 
         GeoFire geoFire = new GeoFire(driverLocation);
 
@@ -468,6 +480,7 @@ public class CustomerMapActivity extends FragmentActivity implements NavigationV
 
     }
 
+    //Get driver info such as name, phone number etc
     private void getDriverInfo() {
         mDriverInfo.setVisibility(View.VISIBLE);
         DatabaseReference mCustomerDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(driverFoundId);
@@ -498,6 +511,7 @@ public class CustomerMapActivity extends FragmentActivity implements NavigationV
         });
     }
 
+    //Method for when the ride has ended
     private DatabaseReference driveHasEndedRef;
     private ValueEventListener driveHasEndedRefListener;
     private void getHasRideEnded() {
@@ -521,6 +535,7 @@ public class CustomerMapActivity extends FragmentActivity implements NavigationV
 
     }
 
+    //Code behind the end ride functionality
     private void endRide() {
         requestBol = false;
         //Cancel event listeners
@@ -630,6 +645,7 @@ public class CustomerMapActivity extends FragmentActivity implements NavigationV
         return false;
     }
 
+    //Method to request user to allow for permission to use their location
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
